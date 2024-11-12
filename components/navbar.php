@@ -1,15 +1,21 @@
+<?php
+
+?>
 <nav class="navbar nav-bg ">
      <div class="container-fluid d-flex justify-content-between align-items-center">
           <div>
-               <a class="navbar-brand text-white fw-bold me-auto">Carenet</a>
+               <a href="index.php" class="navbar-brand text-white fw-bold me-auto">Carenet</a>
           </div>
           <form class="search-box " role="search">
                <input class="form-control me-2 w-full rounded-pill custom-input" type="search" placeholder="Search"
                     aria-label="Search">
           </form>
           <div>
+               <?php if (isset($_SESSION['login']) && ($_SESSION['login'] == true)) : ?>
                <?php include('btn-profile.php');  ?>
-               <!-- <a href="signin-form.php" class="btn btn-light rounded-pill px-3 me-2">Login</a> -->
+               <?php else : ?>
+               <a href="signin-form.php" class="btn btn-light rounded-pill px-3 me-2">Login</a>
+               <?php endif; ?>
           </div>
      </div>
 </nav>

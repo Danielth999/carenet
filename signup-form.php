@@ -1,3 +1,8 @@
+<?php
+include('db.php');
+session_start();
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -33,7 +38,7 @@
           </div>
      </aside>
      <script src="lib/bootstrap.bundle.js"></script>
-     <script src="/lib/jquery.js"></script>
+     <script src="lib/jquery.js"></script>
 
 </body>
 

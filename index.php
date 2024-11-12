@@ -1,3 +1,8 @@
+<?php
+include('db.php');
+session_start();
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,6 +19,7 @@
      <header>
           <?php include('components/navbar.php'); ?>
      </header>
+
      <!-- end navbar -->
      <aside class="container-fluid">
           <div class="row">
@@ -32,8 +38,11 @@
                </div>
           </div>
      </aside>
+
+
      <script src="lib/bootstrap.bundle.js"></script>
-     <script src="/lib/jquery.js"></script>
+     <script src="lib/jquery.js"></script>
+
 
 </body>
 

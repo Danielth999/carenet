@@ -1,8 +1,11 @@
 <?php
+include "../../db.php";
+session_start();
 header('Content-Type: application/json');
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-     $api = "https://jsonplaceholder.typicode.com/users";
-     $users = json_decode(file_get_contents($api), true);
+
+     $stmt = $conn->query("SELECT * FROM users ");
+     $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
      echo json_encode(['status' => 'success', 'data' => $users]);
 } else {
