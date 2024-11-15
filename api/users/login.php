@@ -1,7 +1,6 @@
 <?php
 include "../../db.php";
 session_start();
-header('Content-Type: application/json');
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'];
     $pass =  $_POST['password'];
@@ -18,9 +17,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['role'] = $user['role'];
         $_SESSION['login'] = true;
 
-        echo json_encode(['status' => 'success']);
+        header("Refresh:0;url=../../index.php");
     } else {
         // Login ไม่สำเร็จ
-        echo json_encode(['status' => 'fail', 'message' => 'อีเมลหรือรหัสผ่านไม่ถูกต้อง']);
+        header("Refresh:0;url=../../signup-form.php");
     }
 }

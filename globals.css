@@ -20,6 +20,13 @@ html {
   background-color: #db3b55;
 }
 /* about all card */
+.bg-light {
+  position: sticky;
+  top: 70px; /* ระยะห่างจาก Navbar */
+  height: calc(100vh - 70px); /* ปรับให้เต็มความสูงหน้าจอ */
+  overflow-y: auto; /* ถ้า Sidebar มีเนื้อหาเยอะให้ Scroll ได้ */
+}
+
 .card-width {
   width: 45rem;
 }

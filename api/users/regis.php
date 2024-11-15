@@ -1,7 +1,6 @@
 <?php
 include "../../db.php";
 session_start();
-header('Content-Type: application/json');
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // รับค่าจาก form
@@ -14,10 +13,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // เช็คว่ามีข้อมูลในระบบหรือยัง
     $check = $conn->query("SELECT * FROM users WHERE username = '$username' OR email = '$email'");
-    $result = $check->fetch();
+    $result = $check->fetch(PDO::FETCH_ASSOC);
 
     if ($result) {
-        echo json_encode(['status' => 'fail', 'message' => 'Username หรือ Email นี้มีผู้ใช้งานแล้ว']);
+        ?>
+        <script>alert("ชื่อผู้ใช้หรืออีเมลถูกใช้งานแล้ว")</script>
+        <?php
+        header("Refresh:0;url=../../signup-form.php");
         exit;
     }
 
@@ -33,6 +35,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // เพิ่มข้อมูลโปรไฟล์
     $conn->query("INSERT INTO profiles (user_id, first_name, last_name, age) 
                   VALUES ('$uid', '$fname', '$lname', '$age')");
-
-    echo json_encode(['status' => 'success', 'message' => 'ลงทะเบียนสำเร็จ']);
+ ?>
+ <script>alert("ลงทะเบียนสำเร็จไอ้แก่")</script>
+ <?php
+    header("Refresh:0;url=../../signin-form.php");
 }

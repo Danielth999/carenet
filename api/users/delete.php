@@ -1,13 +1,11 @@
 <?php
-header('Content-Type: application/json');
-if ($_SERVER['REQUEST_METHOD'] === 'DELETE') {
-     // Parse the DELETE request body
-     parse_str(file_get_contents("php://input"), $deleteData);
-     $userId = $deleteData['id'];
+include "../../db.php";
+session_start();
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $id = $_POST['id'];
 
-     // Simulate deleting user from the database (replace with real DB logic)
+    $conn->query("DELETE FROM users WHERE user_id = '$id'");
 
-     echo json_encode(['status' => 'User Deleted']);
-} else {
-     echo json_encode(['status' => 'error', 'message' => 'Invalid request method']);
+    header("Refresh:0;url=../../index.php");
 }
+?>

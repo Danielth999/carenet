@@ -1,7 +1,6 @@
 <?php
 include('db.php');
 session_start();
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -9,41 +8,43 @@ session_start();
 <head>
      <meta charset="UTF-8">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <title>Home</title>
+     <title>Fixed Layout</title>
      <link rel="stylesheet" href="lib/bootstrap.min.css">
      <link rel="stylesheet" href="globals.css">
 </head>
 
 <body>
-     <!-- navbar -->
-     <header>
+     <!-- Navbar -->
+     <header class=" fixed-top  nav-bg">
           <?php include('components/navbar.php'); ?>
      </header>
 
-     <!-- end navbar -->
-     <aside class="container-fluid">
-          <div class="row">
-               <!-- Sidebar -->
+     <div class="container-fluid">
+          <div class="row" style="margin-top: 70px;">
+               <!-- Sidebar ซ้าย -->
+               <nav class="col-md-2 bg-light">
+                    <?php include('components/sidebar.php'); ?>
+               </nav>
 
-               <?php include('components/sidebar.php'); ?>
+               <!-- Content ตรงกลาง -->
+               <main class="col-md-8 d-flex justify-content-center">
+                    <div>
+                         <?php include('contents/home.php'); ?>
+                    </div>
 
+               </main>
 
-               <!-- Content area -->
-               <div class="col-md-9 ml-sm-auto col-lg-10 px-md-4 mt-2 d-flex justify-content-center ">
-                    <main role="main" class="main-content-width">
-                         <div>
-                              <?php include('contents/home.php'); ?>
-                         </div>
-                    </main>
-               </div>
+               <!-- Sidebar ขวา -->
+               <nav class="col-md-2 bg-light">
+                    <?php include('components/rightbar.php'); ?>
+               </nav>>
           </div>
-     </aside>
+     </div>
+
 
 
      <script src="lib/bootstrap.bundle.js"></script>
      <script src="lib/jquery.js"></script>
-
-
 </body>
 
 </html>

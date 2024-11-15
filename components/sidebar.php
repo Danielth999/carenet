@@ -12,8 +12,8 @@ $menuItems = [
           'url' => 'product-form.php'
      ],
      [
-          'title' => 'ประชาสัมพันธ์',
-          'url' => 'news-form.php'
+          'title' => 'ติดต่อผู้ดูแล',
+          'url' => 'contact-form.php'
      ],
      [
           'title' => 'แบบประเมิน',
@@ -22,27 +22,32 @@ $menuItems = [
      // สร้าง menu ระบบจัดการ สำหรับคนที่มี role เป็น admin
      [
           'title' => 'ระบบจัดการ',
-          'url' => 'admin-form.php'
+          'url' => 'admin/admin.php'
      ]
 
 
 ];
 ?>
 
-<nav class="col-md-3 col-lg-2 d-md-block bg-white border-end sidebar">
-     <div class="sidebar-sticky">
-          <ul class="nav flex-column">
-               <?php foreach ($menuItems as $item): ?>
-                    <li class="nav-item">
-                         <a class="nav-link <?php echo ($currentPage == $item['url']) ? 'active' : ''; ?>"
-                              href="<?php echo $item['url']; ?>">
-                              <?php echo $item['title']; ?>
-                         </a>
-                    </li>
-               <?php endforeach; ?>
-          </ul>
+
+<div class="sidebar-sticky ">
+
+     <ul class="nav flex-column ">
+          <?php foreach ($menuItems as $item): ?>
+               <li class="nav-item">
+                    <a class="nav-link <?php echo ($currentPage == $item['url']) ? 'active' : ''; ?>"
+                         href="<?php echo $item['url']; ?>">
+                         <?php echo $item['title']; ?>
+                    </a>
+               </li>
+          <?php endforeach; ?>
+     </ul>
+     <div class="">
+          <?php include("footer.php"); ?>
      </div>
-</nav>
+
+</div>
+
 
 <style>
      /* Base link style */

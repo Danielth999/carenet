@@ -2,7 +2,7 @@
 $menu = [
      [
           'title' => 'โปรไฟล์',
-          'url' => 'profile.php'
+          'url' => 'profile-form.php'
      ],
      [
           'title' => 'ออกจากระบบ',
@@ -11,17 +11,17 @@ $menu = [
 ]
 
 ?>
-<div class="dropdown">
-     <button class="btn btn-light rounded-pill dropdown-toggle" type="button" data-bs-toggle="dropdown"
+
+<div class="dropdown-center">
+     <button class="btn btn-light dropdown-toggle rounded-pill" type="button" data-bs-toggle="dropdown"
           aria-expanded="false">
           <?php if (isset($_SESSION['uname'])) : ?>
-          <?php echo $_SESSION['uname']; ?>
+               <?php echo $_SESSION['uname']; ?>
           <?php endif; ?>
      </button>
-     <ul class="dropdown-menu">
+     <ul class="dropdown-menu ">
           <?php foreach ($menu as $item): ?>
-          <li><a class="dropdown-item" href="<?php echo $item['url']; ?>"><?php echo $item['title']; ?></a></li>
+               <li><a class="dropdown-item" href="<?php echo $item['url']; ?>"><?php echo $item['title']; ?></a></li>
           <?php endforeach; ?>
-
      </ul>
 </div>

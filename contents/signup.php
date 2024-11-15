@@ -2,7 +2,7 @@
      <div class="card">
           <div class="card-body">
                <h3 class="card-title text-center">สมัครสมาชิก</h3>
-               <form id="submitForm">
+               <form id="submitForm" action="api/users/regis.php" method="post">
                     <div class="mb-3">
                          <label for="username" class="form-label">Username</label>
                          <input type="text" id="username" name="username" class="form-control" required>
@@ -36,35 +36,3 @@
           </div>
      </div>
 </div>
-
-<script src="lib/jquery.js"></script>
-<script>
-$(document).ready(function() {
-     $('#submitForm').submit(function(e) {
-          e.preventDefault();
-
-          $.ajax({
-               url: 'api/users/regis.php',
-               type: 'POST',
-               data: $(this).serialize(),
-               dataType: 'json',
-               success: function(response) {
-                    if (response.status === 'success') {
-                         alert(response.message);
-                         window.location.href = 'signin-form.php';
-                    } else {
-                         alert(response.message || 'เกิดข้อผิดพลาดในการลงทะเบียน');
-                    }
-               },
-               error: function(xhr, status, error) {
-                    try {
-                         const response = JSON.parse(xhr.responseText);
-                         alert(response.message || 'เกิดข้อผิดพลาดในการเชื่อมต่อ');
-                    } catch (e) {
-                         alert('เกิดข้อผิดพลาดในการเชื่อมต่อ: ' + error);
-                    }
-               }
-          });
-     });
-});
-</script>
