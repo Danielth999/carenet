@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     unset($_SESSION['verify_email']);
 
-    header("Location:../../login.php");
+    header("Refresh:0;url=../../login.php");
 }
 
 ?>

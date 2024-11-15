@@ -1,11 +1,10 @@
 <?php
 include "../../db.php";
 session_start();
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $id = $_POST['id'];
+if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+    $id = $_GET['id'];
 
     $conn->query("DELETE FROM users WHERE user_id = '$id'");
 
-    header("Refresh:0;url=../../index.php");
+    header("Refresh:0;url=../../admin/manage_users.php");
 }
-?>

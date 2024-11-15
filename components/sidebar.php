@@ -1,6 +1,9 @@
 <?php
+
+
 $currentPage = basename($_SERVER['PHP_SELF']);
 
+// สมมติว่า role ของผู้ใช้ถูกเก็บใน $_SESSION['role']
 $menuItems = [
      [
           'title' => 'หน้าหลัก',
@@ -18,21 +21,20 @@ $menuItems = [
      [
           'title' => 'แบบประเมิน',
           'url' => 'assessment-form.php'
-     ],
-     // สร้าง menu ระบบจัดการ สำหรับคนที่มี role เป็น admin
-     [
-          'title' => 'ระบบจัดการ',
-          'url' => 'admin/admin.php'
      ]
-
-
 ];
+
+// เพิ่มเมนู "ระบบจัดการ" เฉพาะเมื่อ role เป็น admin
+if (isset($_SESSION['role']) && $_SESSION['role'] === 'admin') {
+     $menuItems[] = [
+          'title' => 'ระบบจัดการ',
+          'url' => 'admin/reports.php'
+     ];
+}
 ?>
 
-
-<div class="sidebar-sticky ">
-
-     <ul class="nav flex-column ">
+<div class="sidebar-sticky">
+     <ul class="nav flex-column">
           <?php foreach ($menuItems as $item): ?>
                <li class="nav-item">
                     <a class="nav-link <?php echo ($currentPage == $item['url']) ? 'active' : ''; ?>"
@@ -45,9 +47,7 @@ $menuItems = [
      <div class="">
           <?php include("footer.php"); ?>
      </div>
-
 </div>
-
 
 <style>
      /* Base link style */

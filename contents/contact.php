@@ -41,41 +41,28 @@
                          <h5 class="card-title">ข้อความจากแอดมิน</h5>
                          <div class="border p-3" style="overflow-y: auto; max-height: 400px;">
                               <?php if (!empty($result)): ?>
-                                   <?php foreach ($result as $row): ?>
-                                        <div class="mb-3">
-                                             <!-- แสดงข้อความของผู้ใช้ -->
-                                             <div class="user-message mb-2">
-                                                  <p class="mb-1">
-                                                       <strong><?= htmlspecialchars($row['username']) ?>:</strong>
-                                                       <?= htmlspecialchars($row['message']) ?>
-                                                  </p>
-                                                  <small class="text-muted">
-                                                       <?= date('d/m/Y H:i', strtotime($row['created_at'])) ?>
-                                                  </small>
-                                             </div>
+                              <?php foreach ($result as $row): ?>
+                              <div class="mb-3">
+                                   <!-- แสดงข้อความของผู้ใช้ -->
+                                   <div class="user-message mb-2">
+                                        <p class="mb-1">
+                                             <strong><?= htmlspecialchars($row['username']) ?>:</strong>
+                                             <?= htmlspecialchars($row['message']) ?>
+                                        </p>
+                                        <small class="text-muted">
+                                             <?= date('d/m/Y H:i', strtotime($row['created_at'])) ?>
+                                        </small>
+                                   </div>
 
-                                             <!-- แสดงข้อความตอบกลับของแอดมิน -->
-                                             <?php if (!empty($row['response'])): ?>
-                                                  <div class="admin-response text-end">
-                                                       <p class="text-success mb-1">
-                                                            <strong>แอดมิน:</strong>
-                                                            <?= htmlspecialchars($row['response']) ?>
-                                                       </p>
-                                                  </div>
-                                             <?php else: ?>
-                                                  <p class="text-end text-muted">
-                                                       <em>ยังไม่มีการตอบกลับจากแอดมิน</em>
-                                                  </p>
-                                             <?php endif; ?>
-                                        </div>
-                                        <hr>
+
+
                                    <?php endforeach; ?>
-                              <?php else: ?>
+                                   <?php else: ?>
                                    <p class="text-muted">ยังไม่มีข้อความในระบบ</p>
-                              <?php endif; ?>
+                                   <?php endif; ?>
+                              </div>
                          </div>
                     </div>
                </div>
           </div>
      </div>
-</div>

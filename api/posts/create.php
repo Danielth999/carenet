@@ -2,7 +2,7 @@
 include "../../db.php";
 session_start();
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $uid = $_POST['uid'];
+    $uid = $_SESSION['uid'];
     $cid = $_POST['cid'];
     $title = $_POST['title'];
     $content = $_POST['content'];
@@ -16,6 +16,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $conn->query("INSERT INTO posts (user_id, category_id, title, content, image) 
                   VALUES ('$uid', '$cid', '$title', '$content', '$imageUrl')");
-
-header("Refresh:0;url=../../index.php");
+    
+    header("Refresh:0;url=../../admin/manage_posts.php");
 }

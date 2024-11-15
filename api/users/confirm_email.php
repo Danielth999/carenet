@@ -11,10 +11,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($result) {
         $_SESSION['verified_email'] = $email;
-        header("Location:../../reset_password.php");
+        header("Refresh:0;url=../../reset_password.php");
         exit();
     } else {
-        header("Location:../../comfirm_email.php");
+        header("Refresh:0;url=../../comfirm_email.php");
     }
 }
 ?>

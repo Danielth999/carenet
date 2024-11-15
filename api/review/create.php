@@ -14,6 +14,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $check = $conn->query("SELECT 1 FROM reviews WHERE user_id = '$user_id' AND topic_id = '$topic_id'");
             if ($check->rowCount() == 0) {
                 $conn->query("INSERT INTO reviews (topic_id, user_id, rating) VALUES ('$topic_id', '$user_id', '$rating')");
+                ?>
+                <script>alert("ส่งแบบปะเมินสำเร็จ");</script> 
+                <?php
             } else {
                 ?>
                 <script>alert("คุณได้ให้คะแนนหัวข้อนี้แล้ว.");</script> 
